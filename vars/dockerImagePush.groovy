@@ -32,5 +32,5 @@ def call(String azure_registry_name, String acr_username, String acr_password){
        sh "docker login ${azure_registry_name}.azurecr.io --username ${acr_username} --password ${acr_password}"
 }
 
-       sh "docker push ${azure_registry_name}.azurecr.io:latest"
+       sh "docker push ${azure_registry_name}.azurecr.io/${project}:latest"
 }
