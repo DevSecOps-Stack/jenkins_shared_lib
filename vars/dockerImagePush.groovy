@@ -18,10 +18,11 @@
 //    """
 //}
 
-def callcall(String project, String ImageTag, String hubUser){
-withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-    sh "docker login javaappacr.azurecr.io --username ${USER} --password ${PASS}"
+def call(String project, String ImageTag, String hubUser){
+    withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        sh "docker login javaappacr.azurecr.io --username ${USER} --password ${PASS}"
+    }
+    sh "docker push javaappacr.azurecr.io/${hubUser}/${project}:${ImageTag}"
+    sh "docker push javaappacr.azurecr.io/${hubUser}/${project}:latest"
 }
-  sh "docker push ${hubUser}/${project}:${ImageTag}"
-  sh "docker push ${hubUser}/${project}:latest
-}
+
