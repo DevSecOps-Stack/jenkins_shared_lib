@@ -18,19 +18,10 @@
 //    """
 //}
 
-
-
-def call(String azure_registry_name, String acr_username, String acr_password){
-    withCredentials([usernamePassword
-    (credentialsId: 'acr', 
-     passwordVariable: 'acr_password', 
-     usernameVariable: 'acr_username'), 
-                     usernamePassword(credentialsId: '0406be6e-0af5-44f7-ae01-8cf4f655d302', 
-                                      passwordVariable: '', 
-                                      usernameVariable: 'azure_registry_name'
-                                      )]) {
-       sh "docker login ${azure_registry_name}.azurecr.io --username ${acr_username} --password ${acr_password}"
+def callcall(String project, String ImageTag, String hubUser){
+withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    sh "docker login javaappacr.azurecr.io --username ${USER} --password ${PASS}"
 }
-
-       sh "docker push ${azure_registry_name}.azurecr.io/${project}:latest"
+  sh "docker push javaappacr.azurecr.io/${project}:${ImageTag}"
+  sh "docker push javaappacr.azurecr.io/${project}:latest
 }
