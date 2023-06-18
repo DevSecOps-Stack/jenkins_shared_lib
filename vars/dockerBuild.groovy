@@ -15,7 +15,7 @@
 //     """
 // }
 
-def call(String Project, String azure_registry_name, String acr_username, String acr_password){
+def call(String Project, String azure_registry_name){
    sh """
       docker build -t ${project} .
       docker tag ${project}:latest ${azure_registry_name}.azurecr.io/${project}:latest"
