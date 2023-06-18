@@ -14,3 +14,10 @@
 //      docker tag ${ecr_repoName}:latest ${aws_account_id}.dkr.ecr.${region}.amazonaws.com/${ecr_repoName}:latest
 //     """
 // }
+
+def call(String azure_registry_name, String acr_username, String acr_password, String acr_repoName){
+   sh """
+     docker build -t ${azure_registry_name} .
+     docker tag ${azure_registry_name}.azurecr.io:latest"
+   """
+}
