@@ -21,7 +21,7 @@
 def call(String appname, String acrurl, String ImageTag){
     withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh '''
-        echo "${PASS}" | az acr login --name ${acrurl} --username ${USER} --password-stdin
+        az acr login --name ${acrurl} --username ${USER} --password ${PASS}
         '''
     }
     sh "docker push ${acrurl}/${appname}:${ImageTag}"
