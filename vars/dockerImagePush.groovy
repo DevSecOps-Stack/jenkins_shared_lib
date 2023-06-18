@@ -22,7 +22,7 @@ def callcall(String project, String ImageTag, String hubUser){
 withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
     sh "docker login javaappacr.azurecr.io --username ${USER} --password ${PASS}"
 }
-  sh "docker push ${hubUser}/${project}:${ImageTag}"
-  sh "docker push ${hubUser}/${project}:latest"
+  sh "docker push ${acrurl}/${javaapp}:${ImageTag}"
+  sh "docker push ${acrurl}/${javaapp}:latest"
 }
 
