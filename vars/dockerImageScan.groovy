@@ -1,7 +1,7 @@
-def call(String project, String ImageTag, String hubUser){
+def call(String appname, String acrurl, String ImageTag){
 
   sh """   
-      trivy image ${hubUser}/${project}:latest > scan.txt
+      trivy image ${acrurl}/${appname}:latest > scan.txt
       cat scan.txt
    """
 }
