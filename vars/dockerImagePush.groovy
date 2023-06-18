@@ -18,7 +18,7 @@
 //    """
 //}
 
-def callcall(String project, String ImageTag, String hubUser){
+def callcall(String appname, String acrurl, String ImageTag){
 withCredentials([usernamePassword(credentialsId: 'acr', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
     sh "docker login javaappacr.azurecr.io --username ${USER} --password ${PASS}"
 }
